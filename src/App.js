@@ -1,25 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import { Button, Card } from 'antd';
+import DragAndDrop from './components/DragAndDrop';
+import useFileSelection from './hooks/useFileSelection';
 
-function App() {
+const App = () => {
+  const [addFile, removeFile] = useFileSelection();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ margin: '1%' }}>
+      <Card
+        style={{ margin: 'auto', width: '50%' }}
+        actions={[<Button type="primary">Submit</Button>]}
+      >
+        <DragAndDrop addFile={addFile} removeFile={removeFile} />
+      </Card>
     </div>
   );
-}
+};
 
 export default App;
